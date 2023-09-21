@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* FormClasses */
+
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:active,
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #f3f4f6 inset !important;
+  -webkit-text-fill-color: #777f8d !important;
+  background-color: #f3f4f6 !important;
+  /* color: #777F8D; */
+}
+
+input::placeholder {
+  color: transparent;
+}
+
+/* For WebKit browsers (e.g., Chrome, Safari) */
+
+input::-webkit-input-placeholder {
+  color: transparent;
+}
+
+input:focus {
+  color: #777f8d;
+  /* Add any other styles you want when the input is focused */
+}
+
+input:focus::-webkit-input-placeholder {
+  color: #777f8d;
+  /* Add any other WebKit specific styles for the input placeholder when it is in focus */
+}
+
+textarea::placeholder {
+  color: transparent;
+}
+
+/* For WebKit browsers (e.g., Chrome, Safari) */
+textarea::-webkit-input-placeholder {
+  color: transparent;
+}
+
+/* Textarea styles when focused for all browsers */
+textarea:focus {
+  color: #777f8d;
+  /* Add any other styles you want when the textarea is focused */
+}
+
+/* WebKit specific styles when textarea is in focus */
+textarea:focus::-webkit-input-placeholder {
+  color: #777f8d;
+  /* Add any other WebKit specific styles for the textarea placeholder when it is in focus */
+}
+
+.placeHolderClassName {
+  @apply border-gray-300 bg-gray-400  placeholder:text-transparent  text-gray-700;
+}
+.errorClassName {
+  @apply border-danger-500 focus:border-danger-200 focus:ring-danger-200 focus:shadow-danger-xs;
+}
+
+.successClassName {
+  @apply border-success-500 focus:border-success-200 focus:ring-success-200 focus:shadow-success-xs;
+}
+
+.focusClassName {
+  @apply focus:border-primary-200 focus:ring-primary-200 focus:placeholder:text-gray-300 focus:shadow-primary-sm;
+}
+
+.masonry-3-col {
+  column-count: 3;
+  column-gap: 1em;
+  @apply mx-10;
+}
+
+@media (max-width: 991px) {
+  .masonry-3-col {
+    column-count: 2;
+    column-gap: 1em;
+    @apply mx-5;
+  }
+}
+@media (max-width: 480px) {
+  .masonry-3-col {
+    column-count: 1;
+    column-gap: 1em;
+    @apply mx-1;
+  }
+}
+
+.break-inside {
+  break-inside: avoid;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding: 20px;
+}
+
+.column {
+  box-sizing: border-box;
+}
+
+/* For Tablet */
+@media (max-width: 768px) {
+  .gridContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* For Mobile */
+@media (max-width: 480px) {
+  .gridContainer {
+    padding: 14px;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.spinner {
+  display: grid;
+  place-items: center;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 180deg at 50% 50%,
+    rgba(82, 0, 255, 0) 0deg,
+    #8b5cf6 360deg
+  );
+  animation: spin 2s infinite linear;
+}
+.spinner::before {
+  content: "";
+  border-radius: 50%;
+  width: 80%;
+  height: 80%;
+  background-color: #f3f4f6;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
