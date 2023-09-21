@@ -20,10 +20,10 @@ const Hero = () => {
                   Landscapes to Portraits, Every Image Tells an amazing Story!
                 </p>
                 <div className="mt-12 flex justify-center gap-4 sm:gap-6 md:justify-start ">
-                  <Link href="/register">
+                  <Link href="/login">
                     <Button> Get started</Button>
                   </Link>
-                  <Link href="/register">
+                  <Link href="/login">
                     <Button color="secondary"> Learn more</Button>
                   </Link>
                 </div>

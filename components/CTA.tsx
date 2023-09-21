@@ -29,7 +29,7 @@ const CTA = () => {
             aspernatur impedit nihil quisquam, voluptates placeat architecto .
           </p>
           <div className="flex items-center justify-center">
-            <Link href="/register">
+            <Link href="/login">
               <Button>Get Started Now!</Button>
             </Link>
           </div>

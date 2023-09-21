@@ -11,11 +11,11 @@ const menu: MenuTypes[] = [
   },
   {
     title: "For Companies",
-    url: "/register",
+    url: "/login",
   },
   {
     title: "For Individual",
-    url: "/register",
+    url: "/login",
   },
 ];
 
