@@ -13,18 +13,25 @@ import Button from "@/components/Button";
 const Gallery = () => {
   const { data: session } = useSession();
   const router = useRouter();
-  if (session === null) {
-    router.push("/");
-    //   setTimeout(() => toast.success("Logout Succssfully ✅ "), 1000);
-    toast.success("Logout Succssfully ✅ ");
-  }
+
+  useEffect(() => {
+    if (session === null) {
+      router.push("/");
+      toast.success("Logout Successfully ✅ ");
+    }
+  }, [router, session]);
   const [isLoading, setIsLoading] = useState(true);
 
   let [images, setImages] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   useEffect(() => {
     setImages(galleryData.sort((a, b) => a.id - b.id));
-    setIsLoading(false);
+
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
   }, []);
   //  set boundary for dragging something tha inst an image
 
@@ -111,7 +118,7 @@ const Gallery = () => {
   };
 
   const filteredData = images.filter((item) =>
-    item.tag.toLowerCase().includes(searchTerm.toLowerCase())
+    item?.tag.toLowerCase().includes(searchTerm.toLowerCase())
   );
   // console.log("image filteredData", filteredData);
 
@@ -121,7 +128,7 @@ const Gallery = () => {
   };
 
   return (
-    <div className="xl:px-6 flex flex-col justify-center relative">
+    <div className="xl:container mx-auto flex flex-col justify-center relative">
       <div className=" py-10 px-4 md:px-10 lg:px-96">
         <SearchComponent value={searchTerm} onChange={handleSearch} />
       </div>
@@ -163,18 +170,19 @@ const Gallery = () => {
             />
           ) : (
             <div
-              className="masonry-3-col  mb-20"
+              // className="masonry-3-col  mb-20"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4  mb-20"
               onTouchStart={(e) => handleTouchStartGallery(e)}
               onTouchEnd={(e) => handleTouchEndGallery(e)}
             >
-              {filteredData.map(({ imageUrl }, index) => (
+              {filteredData.map(({ imageUrl, tag }, index) => (
                 <div
                   key={index}
                   className="break-inside border rounded-lg p-3 mb-5"
                 >
-                  <span className="overflow-hidden group rounded-lg">
+                  <div className="overflow-hidden group  rounded-lg relative">
                     <img
-                      className="pic w-full rounded-lg"
+                      className="pic w-full h-[380px] rounded-lg"
                       src={imageUrl}
                       alt="imgaes gallery"
                       loading="lazy"
@@ -184,10 +192,13 @@ const Gallery = () => {
                       onDragStart={(e) => handleDragStart(e, index)}
                       onDragOver={handleDragOver}
                       onDrop={(e) => handleDrop(e, index)}
-                      onTouchStart={(e) => handleTouchStart(e, index)}
-                      onTouchEnd={(e) => handleTouchEnd(e, index)}
+                      // onTouchStart={(e) => handleTouchStart(e, index)}
+                      // onTouchEnd={(e) => handleTouchEnd(e, index)}
                     />
-                  </span>
+                    <div className=" absolute bottom-3 left-3 p-1 rounded-full px-3 bg-defaultColor text-white">
+                      {tag}
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>

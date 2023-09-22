@@ -22,3 +22,7 @@ export const users = [
     password: "1Password",
   },
 ];
+
+export const ItemTypes = {
+  IMAGE: "image",
+};
