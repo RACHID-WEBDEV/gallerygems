@@ -171,18 +171,18 @@ const Gallery = () => {
           ) : (
             <div
               // className="masonry-3-col  mb-20"
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4  mb-20"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 "
               onTouchStart={(e) => handleTouchStartGallery(e)}
               onTouchEnd={(e) => handleTouchEndGallery(e)}
             >
               {filteredData.map(({ imageUrl, tag }, index) => (
                 <div
                   key={index}
-                  className="break-inside border rounded-lg p-3 mb-5"
+                  className="break-inside border rounded-lg p-3 "
                 >
                   <div className="overflow-hidden group  rounded-lg relative">
                     <img
-                      className="pic w-full h-[380px] rounded-lg"
+                      className="pic w-full h-[420px] rounded-lg"
                       src={imageUrl}
                       alt="imgaes gallery"
                       loading="lazy"
